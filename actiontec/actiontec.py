@@ -7,6 +7,15 @@ import cStringIO as StringIO
 
 import pexpect
 
+class ActiontecException(Exception):
+    pass
+
+class LoginFailed(ActiontecException):
+    pass
+
+class BadCommand(ActiontecException):
+    pass
+
 class Actiontec (object):
     def __init__ (self, address = '192.168.1.1', username = 'admin',
             password = 'password'):
@@ -22,14 +31,18 @@ class Actiontec (object):
         self.spawn.sendline(self.username)
         self.spawn.expect('Password:')
         self.spawn.sendline(self.password)
-        self.spawn.expect('Router>')
+        if self.spawn.expect(['Router>', 'Username:']) == 1:
+            raise LoginFailed(self.username)
 
     def run(self, command):
         out = StringIO.StringIO()
         self.spawn.logfile_read = out
         self.spawn.sendline(command)
-        self.spawn.expect('Router>')
+        which = self.spawn.expect(['Router>', 'Bad command'])
         self.spawn.logfile_read = None
+
+        if which == 1:
+            raise BadCommand(command)
 
         return out.getvalue()
 
