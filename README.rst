@@ -24,6 +24,41 @@ following classes:
   functions for retrieving common operating statistics from the
   Actiontec router.
 
+Requirements
+============
+
+- You need to enable the telnet administration interface on your
+  router.
+
+  - Log in to your router.
+
+  - Select "Advanced".
+
+  - "Yes", you want to proceed.
+
+  - Select "Local Administration", located in the menu under the
+    toolbox icon.
+
+  - Under "Allow local telnet access", enable "Using Primary Telnet
+    port (23)".
+
+  - Click "Apply".
+
+- You will need to install pexpect_.
+
+  - If you are on CentOS::
+
+    # yum install pexpect
+
+  - If you are on Ubuntu::
+
+    # apt-get install python-pexpect
+
+  - If you are on something else and you have the ``setuptools`` package
+    installed::
+
+    # easy_install pexpect
+
 Examples
 ========
 
