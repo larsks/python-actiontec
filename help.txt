@@ -1,0 +1,159 @@
+help all
+
+Command Category conf - Read and write Wireless Broadband Router configuration data
+factory            Factory related commands
+print              Print Wireless Broadband Router configuration
+set                Set Wireless Broadband Router configuration path to value
+set_obscure        Set Wireless Broadband Router configuration path to an 
+                   obscured value
+del                Delete subtree from Wireless Broadband Router configuration
+ram_set            Set Wireless Broadband Router dynamic configuration
+ram_print          Print Wireless Broadband Router dynamic configuration
+reconf             Reconfigure the system according to the current Wireless 
+                   Broadband Router configuration
+firmware_restore   Restore to saved firmware and reboot.
+exit               Exit sub menu
+help               Show help for commands within this menu
+
+Command Category upnp - UPnP commands
+igd      IGD commands
+status   Display UPnP status
+exit     Exit sub menu
+help     Show help for commands within this menu
+
+Command Category qos - Control and display QoS data
+utilization   Connection utilization information
+exit          Exit sub menu
+help          Show help for commands within this menu
+
+Command Category cwmp - CWMP related commands
+status          Print CWMP status
+session_start   Start CWMP session to ACS
+session_stop    Stop CWMP session
+exit            Exit sub menu
+help            Show help for commands within this menu
+
+Command Category bridge - API for managing ethernet bridge
+connection   connect separate network interfaces to form one seamless LAN
+config       Configure bridge
+info         Print bridge information
+exit         Exit sub menu
+help         Show help for commands within this menu
+
+Command Category firewall - Control and display Firewall and NAT data
+restart          Stop and start Firewall & NAT
+start            Start Firewall & NAT
+stop             Stop Firewall & NAT
+filter           Turn Firewall packet inspection on/off
+mac_cache_dump   Dump MAC cache data
+dump             Display Firewall data
+variable         Display variables of the firewall rules
+trace            Trace packet traversal via the Firewall ruleset
+fastpath         Turns firewall fastpath feature on/off (default is on)
+exit             Exit sub menu
+help             Show help for commands within this menu
+
+Command Category connection - API for managing connections
+pppoe   Configure pppoe interface
+vlan    Configure vlan interface
+exit    Exit sub menu
+help    Show help for commands within this menu
+
+Command Category inet_connection - API for managing internet connections
+pppoe   Configure pppoe internet connection
+ether   Configure ethernet internet connection
+exit    Exit sub menu
+help    Show help for commands within this menu
+
+Command Category misc - API for Wireless Broadband Router miscellaneous tasks
+print_ram         print ram consumption for each process
+vlan_add          Add VLAN interface
+top               Profiling over event loop and estream
+wbm_debug_set     Stop and start WBM debug mode
+wbm_border_set    Stop and start WBM border mode
+knet_hooks_dump   Dump to console which knet_hooks run on each device
+exit              Exit sub menu
+help              Show help for commands within this menu
+
+Command Category firmware_update - Firmware update commands
+start    Remotely upgrade Wireless Broadband Router
+cancel   Kill running remote upgrade
+exit     Exit sub menu
+help     Show help for commands within this menu
+
+Command Category log - Controls Wireless Broadband Router logging behavior
+filter   Controls the CLI session logging behavior
+print    Print the contents of a given syslog buffer to the console
+clear    Clear the contents of a given syslog buffer
+exit     Exit sub menu
+help     Show help for commands within this menu
+
+Command Category dev - Device related commands
+moca              MOCA commands
+mii_reg_get       Get Ethernet MII register value
+mii_reg_set       Set Ethernet MII register value
+mii_phy_reg_get   Get Ethernet MII register value
+mii_phy_reg_set   Set Ethernet MII register value
+exit              Exit sub menu
+help              Show help for commands within this menu
+
+Command Category kernel - Kernel related commands
+sys_ioctl      issue openrg ioctl
+meminfo        Print memory information
+top            Print Wireless Broadband Router's processes memory usage
+cpu_load_on    Periodically shows cpu usage.
+cpu_load_off   Stop showing cpu usage (triggered by cpu_load_on).
+cpu_load_avg   Shows average cpu usage of last 1, 5 and 15 minutes. 
+exit           Exit sub menu
+help           Show help for commands within this menu
+
+Command Category system - Commands to control Wireless Broadband Router execution
+die                        Exit from Wireless Broadband Router and return ret
+ps                         Print Wireless Broadband Router's tasks
+entity_close               Close an entity
+etask_list_dump            Dump back trace of all etasks
+restore_factory_settings   Restore factory configuration
+reboot                     Reboot the system
+ver                        Display version information
+print_config               Print compilation configuration. Search for option 
+                           if specified
+exec                       Execute program
+cat                        Print file contents to console
+shell                      Spawn busybox shell in foreground
+date                       Print the current UTC and local time
+exit                       Exit sub menu
+help                       Show help for commands within this menu
+
+Command Category flash - Flash and loader related commands
+commit   Save Wireless Broadband Router configuration to flash
+erase    Erase a given section in the flash
+load     Load and burn image
+boot     Boot the system
+bset     Configure bootloader
+layout   Print the flash layout and content
+dump     Dump the flash content
+lock     Lock mtd region
+unlock   Unlock mtd region
+exit     Exit sub menu
+help     Show help for commands within this menu
+
+Command Category net - Network related commands
+dns_route         Dyncamic Routing according to DNS replies
+igmp              IGMP Proxy related commands
+host              Resolve host by name
+wsc               wps related commands
+ifconfig          Configure network interface
+ping              Test network connectivity
+rg_ifconfig       List Wireless Broadband Router Network Devices
+route             Print route table
+main_wan          Print the name of the current main wan device
+intercept_state   Print interception state
+exit              Exit sub menu
+help              Show help for commands within this menu
+
+Command Category cmd - Commands related to the Command module
+exit   Exit from the current CLI session
+help   Show help for commands within this menu
+
+Returned 0
+Wireless Broadband Router> 

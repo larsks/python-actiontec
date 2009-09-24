@@ -37,9 +37,35 @@ class Actiontec (object):
         self.spawn.close()
         self.spawn = None
 
+    def interfaces(self):
+        res = self.run('net ifconfig')
+
+        iface = None
+        interfaces = []
+
+        for line in res.split('\n'):
+            if 'Device' in line:
+                if iface:
+                    interfaces.append(iface)
+                iface = { 'name': line.split()[1] }
+            if 'state=' in line:
+                iface['state'] = line.split('=')[-1].strip()
+
+        return interfaces
+
+def parse_args():
+    p = optparse.OptionParser()
+    p.add_option('-H', '--host', '--address', default='192.168.1.1')
+    p.add_option('-u', '--user', default='admin')
+    p.add_option('-p', '--password', default='password')
+
+    return p.parse_args()
+
 def main():
-    a = Actiontec('192.168.1.1', 'admin', 'nutsh3ll')
-    text = a.run(' '.join(sys.argv[1:]))
+    opts, args = parse_args()
+
+    a = Actiontec(opts.host, opts.user, opts.password)
+    text = a.run(' '.join(args))
     print text
 
 if __name__ == '__main__':
