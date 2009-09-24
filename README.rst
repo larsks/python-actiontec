@@ -126,5 +126,39 @@ interface names and the following parameters extracted from
 - tx_carrier
 - tx_compressed
 
+Security considerations
+=======================
+
+This code uses telnet to interact with your router.  This means that
+the username and password are sent over your network in cleartext.
+This has security implications, especially in a wireless environment:
+it is possible that with an appropriate level of access someone would
+be able to acquire your credentials and then have administrative
+access to your router.
+
+You have several options for responding to this information:
+
+#. You can ignore it.  You're the best judge of the particular
+   security risks associated with your own network.
+
+#. You can use an SSL-enabled telnet client.
+
+   While the router support SSL-encrypted telnet, the telnet client
+   distributed with most operating systems does not include SSL
+   support.  You may need to build your own version with SSL support. 
+
+   You will need to specify an alternate port when using this
+   API if you pursue this solution.
+
+#. You can use an SSL wrapper.
+
+   Programs such as stunnel_ can be used to provide SSL support to
+   tools that otherwise would communicate over a cleartext connection.
+   You would use stunnel_ to forward a local port on your computer to
+   the SSL telnet port on the router.
+
+   You will need to specify an alternate port when using this
+   API if you pursue this solution.
+
 .. _pexpect: http://pexpect.sourceforge.net/pexpect.html
 

@@ -14,8 +14,9 @@ class Statistics (actiontec.Actiontec):
         devices = {}
         for line in res.split('\n'):
             if ':' in line:
-                iface, stats = line.split(':')
-                devices[iface] = dict(zip(IFSTAT_FIELDS, stats.split()))
+                iface, stats = [x.strip() for x in line.split(':')]
+                devices[iface] = dict(zip(IFSTAT_FIELDS,
+                    [int(x) for x in stats.split()]))
 
         return devices
 
@@ -43,7 +44,7 @@ class Statistics (actiontec.Actiontec):
             elif ':' in line:
                 k = line.split(':')[0]
                 v = line.split(':')[1].split()[0]
-                meminfo[k] = v
+                meminfo[k] = int(v)
 
         return meminfo
 

@@ -17,16 +17,21 @@ class BadCommand(ActiontecException):
     pass
 
 class Actiontec (object):
-    def __init__ (self, address = '192.168.1.1', username = 'admin',
-            password = 'password'):
+    def __init__ (self,
+            address = '192.168.1.1',
+            username = 'admin',
+            password = 'password',
+            port = 23):
         self.address = address
         self.username = username
         self.password = password
+        self.port = int(port)
 
         self.connect()
 
     def connect(self):
-        self.spawn = pexpect.spawn('telnet %s' % self.address)
+        self.spawn = pexpect.spawn('telnet %s %d' % (self.address,
+            self.port))
         self.spawn.expect('Username:')
         self.spawn.sendline(self.username)
         self.spawn.expect('Password:')
@@ -54,12 +59,12 @@ class Actiontec (object):
         res = self.run('net ifconfig')
 
         iface = None
-        interfaces = []
+        interfaces = {}
 
         for line in res.split('\n'):
             if 'Device' in line:
                 if iface:
-                    interfaces.append(iface)
+                    interfaces[iface['name']] = iface
                 iface = { 'name': line.split()[1] }
             if 'state=' in line:
                 iface['state'] = line.split('=')[-1].strip()
