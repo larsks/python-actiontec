@@ -161,4 +161,5 @@ You have several options for responding to this information:
    API if you pursue this solution.
 
 .. _pexpect: http://pexpect.sourceforge.net/pexpect.html
+.. _stunnel: http://www.stunnel.org/
 
