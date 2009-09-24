@@ -21,16 +21,20 @@ class Actiontec (object):
             address = '192.168.1.1',
             username = 'admin',
             password = 'password',
-            port = 23):
+            port = 23,
+            telnet_path = 'telnet'):
         self.address = address
         self.username = username
         self.password = password
         self.port = int(port)
+        self.telnet_path = telnet_path
 
         self.connect()
 
     def connect(self):
-        self.spawn = pexpect.spawn('telnet %s %d' % (self.address,
+        self.spawn = pexpect.spawn('%s %s %d' % (
+            self.telnet_path,
+            self.address,
             self.port))
         self.spawn.expect('Username:')
         self.spawn.sendline(self.username)
