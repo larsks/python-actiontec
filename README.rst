@@ -68,22 +68,22 @@ The ``ifstats`` method returns a dictionary of which the keys are
 interface names and the following parameters extracted from
 ``/proc/net/dev``:
 
-  - rx_bytes
-  - rx_packets
-  - rx_errs
-  - rx_drop
-  - rx_fifo
-  - rx_frame
-  - rx_compressed
-  - rx_multicast'
-  - tx_bytes
-  - tx_packets
-  - tx_errs
-  - tx_drop
-  - tx_fifo
-  - tx_colls
-  - tx_carrier
-  - tx_compressed
+- rx_bytes
+- rx_packets
+- rx_errs
+- rx_drop
+- rx_fifo
+- rx_frame
+- rx_compressed
+- rx_multicast'
+- tx_bytes
+- tx_packets
+- tx_errs
+- tx_drop
+- tx_fifo
+- tx_colls
+- tx_carrier
+- tx_compressed
 
 .. _pexpect: http://pexpect.sourceforge.net/pexpect.html
 
