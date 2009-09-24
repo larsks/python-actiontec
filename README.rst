@@ -44,6 +44,9 @@ Requirements
 
   - Click "Apply".
 
+- You need the ``telnet`` command.  If you're on Linux or OS X you're
+  probably in good shape.
+
 - You will need to install pexpect_.
 
   - If you are on CentOS::
@@ -58,6 +61,9 @@ Requirements
     installed::
 
     # easy_install pexpect
+
+**NB**: It's possible that the pexpect_ module will only run on
+Unix-like platforms (Linux, OS X, (Free|Net|Open|)BSD, etc).
 
 Examples
 ========
