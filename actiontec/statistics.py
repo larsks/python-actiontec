@@ -48,3 +48,43 @@ class Statistics (actiontec.Actiontec):
 
         return meminfo
 
+    def processes(self):
+        res = self.run('kernel top')
+        state = 0
+        processes = []
+
+        for line in res.split('\n'):
+            if state == 0:
+                if line.startswith('Command'):
+                    state = 1
+            elif state == 1:
+                if line.startswith('Wireless Broadband'):
+                    break
+                else:
+                    processes.append(line.split()[0])
+
+        return processes
+
+    def cpus(self):
+        res = self.run('system cat /proc/cpuinfo')
+
+        cpus = []
+        cpu = {}
+        for line in res.split('\n'):
+            if not ':' in line:
+                continue
+            elif ':' in line:
+                k,v = [x.strip() for x in line.split(':')]
+                if k == 'system type':
+                    continue
+                elif k == 'processor' and cpu:
+                    cpus.append(cpu)
+                    cpu = {}
+
+                cpu[k] = v
+
+        if cpu:
+            cpus.append(cpu)
+
+        return cpus
+
