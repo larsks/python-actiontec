@@ -7,6 +7,14 @@ import cStringIO as StringIO
 
 import pexpect
 
+defaults = {
+        'username'      : 'admin',
+        'password'      : 'password',
+        'address'       : '192.168.1.1',
+        'port'          : 23,
+        'telnet_path'   : 'telnet'
+        }
+
 class ActiontecException(Exception):
     pass
 
@@ -28,6 +36,10 @@ class Actiontec (object):
         self.password = password
         self.port = int(port)
         self.telnet_path = telnet_path
+
+        for k,v in defaults.items():
+            if getattr(self, k) is None:
+                setattr(self, k, v)
 
         self.connect()
 
