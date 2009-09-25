@@ -166,8 +166,9 @@ Ganglia
 Ganglia_ is a distributed monitoring system that, like other such systems,
 stores data in RRD_ files and graphs the data on a web interface.
 This package includes a script (``ganglia/actiontec_metrics.py``) that
-produces metrics for Ganglia using the ``gmetric`` script.  Using this
-script you can get graphs of system load and network interface
+produces metrics for Ganglia using the ``gmetric`` tool.
+
+Using this script you can get graphs of system load and network interface
 statistics for your Actiontec router.
 
 .. _pexpect: http://pexpect.sourceforge.net/pexpect.html
