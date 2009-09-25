@@ -160,6 +160,18 @@ You have several options for responding to this information:
    You will need to specify an alternate port when using this
    API if you pursue this solution.
 
+Ganglia
+=======
+
+Ganglia_ is a distributed monitoring system that, like other such systems,
+stores data in RRD_ files and graphs the data on a web interface.
+This package includes a script (``ganglia/actiontec_metrics.py``) that
+produces metrics for Ganglia using the ``gmetric`` script.  Using this
+script you can get graphs of system load and network interface
+statistics for your Actiontec router.
+
 .. _pexpect: http://pexpect.sourceforge.net/pexpect.html
 .. _stunnel: http://www.stunnel.org/
+.. _ganglia: http://ganglia.sourceforge.net/
+.. _rrd: http://oss.oetiker.ch/rrdtool/
 
