@@ -93,13 +93,13 @@ command, the code will raise ``actiontec.actiontec.BadCommand``.
 Getting statistics
 ------------------
 
-If you would like to retrieve the 1, 5, and 10 minute load average
+If you would like to retrieve the 1, 5, and 15 minute load average
 from your router, you would run code similar to the following::
 
   from actiontec.statistics import Statistics
 
   a = Statistics()
-  avg1, avg5, avg10 = a.loadavg()
+  avg1, avg5, avg15 = a.loadavg()
 
 To get detailed interface statistics::
 
