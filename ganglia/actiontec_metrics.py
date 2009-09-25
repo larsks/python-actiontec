@@ -85,6 +85,16 @@ def main():
                     spoof='%s:%s' % (opts.address, opts.name))
                 lastval[fqname] = curval
 
+        meminfo = a.meminfo()
+        for k1,k2 in (('mem_total', 'MemTotal'), ('mem_cached', 'Cached'),
+                ('mem_free', 'MemFree'), ('mem_buffers', 'Buffers'), 
+                ('mem_shared', None)):
+
+            gmetric(k1, 'float', meminfo.get(k2, 0),
+                    units='KB',
+                    dmax=300,
+                    spoof='%s:%s' % (opts.address, opts.name))
+
         time.sleep (60 - (time.time() - start_time))
     
 
