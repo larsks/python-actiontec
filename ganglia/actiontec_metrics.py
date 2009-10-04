@@ -71,19 +71,33 @@ def main():
         interfaces = a.interfaces()
         ifstats = a.ifstats()
 
+        totals = {}
+
         for iface,data in interfaces.items():
             if data['state'] not in ['running']:
                 continue
 
             for name in ['rx_packets', 'rx_bytes', 'rx_errs', 'rx_drop',
                     'tx_packets', 'tx_bytes', 'tx_errs', 'tx_drop']:
+
                 fqname = '%s_%s' % (iface, name)
                 curval = ifstats[iface][name]
+                totals[name] = totals.get(name, 0) + curval
+
                 rate = curval - lastval.get(fqname, curval)
                 gmetric(fqname, 'uint32', rate,
                     dmax=300,
                     spoof='%s:%s' % (opts.address, opts.name))
                 lastval[fqname] = curval
+
+        for name in [('rx_packets', 'pkts_in'), ('rx_bytes', 'bytes_in'),
+                ('tx_packets', 'pkts_out'), ('tx_bytes', 'bytes_out')]:
+            curval = totals[name[0]]
+            rate = curval - lastval.get(name[0], curval)
+            gmetric(name[1], 'float', rate,
+                    dmax=300,
+                    spoof='%s:%s' % (opts.address, opts.name))
+            lastval[name[0]] = totals[name[0]]
 
         meminfo = a.meminfo()
         for k1,k2 in (('mem_total', 'MemTotal'), ('mem_cached', 'Cached'),
